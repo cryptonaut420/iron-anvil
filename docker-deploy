@@ -1,0 +1,14 @@
+#!/bin/bash
+set -e
+
+# Create data directory if it doesn't exist
+mkdir -p data
+
+# Build and start the container
+sudo docker-compose up --build -d
+
+# Save the container ID for docker-access
+sudo docker ps -q --filter "name=iron-anvil" > container.id
+
+echo "Iron Anvil persistent server has been deployed!"
+echo "RPC endpoint available at: http://localhost:8545" 

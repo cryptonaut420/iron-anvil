@@ -1,0 +1,4 @@
+# Save Anvil state every hour
+0 * * * * /app/save-state.sh >> /var/log/anvil-state-save.log 2>&1
+
+# Empty line at the end is required for crontab to work properly 

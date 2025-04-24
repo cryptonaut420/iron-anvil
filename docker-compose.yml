@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  iron-anvil:
+    build: .
+    container_name: iron-anvil
+    ports:
+      - "8545:8545"
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
+    environment:
+      - ANVIL_IP_ADDR=0.0.0.0 

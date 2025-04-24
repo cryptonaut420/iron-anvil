@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Check if container.id file exists
+if [ ! -f container.id ]; then
+  echo "Error: container.id file not found. Make sure to run ./docker-deploy first."
+  exit 1
+fi
+
+# Get container ID from file
+CONTAINER_ID=$(cat container.id)
+
+# Check if container ID is valid
+if [ -z "$CONTAINER_ID" ]; then
+  echo "Error: No container ID found. Run ./docker-deploy to start the container."
+  exit 1
+fi
+
+# Access the container shell
+echo "Accessing Iron Anvil container..."
+sudo docker exec -it "$CONTAINER_ID" /bin/bash 
